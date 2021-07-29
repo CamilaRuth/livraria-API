@@ -26,12 +26,12 @@ const indexController = {
         res.json(livro)
     },
 
-    editarLivro: async (req, res) => {
+    mostrarLivro: async (req, res) => {
         let {
             id
         } = req.params
-        const editarLivro = await Livros.findByPk(id)
-        res.json(editarLivro)
+        const mostrarLivro = await Livros.findByPk(id)
+        res.json(mostrarLivro)
     },
 
     atualizarLivro: async (req, res) => {
@@ -56,8 +56,13 @@ const indexController = {
                 id
             }
         })
-        res.json(atualizarLivro)
+        if (atualizarLivro) {
+            const livroAtualizado = await Livros.findByPk(id)
 
+            res.json(livroAtualizado)
+        }
+
+        res.status(401).send("erro ao atualizar livro")
     }
 
 }
