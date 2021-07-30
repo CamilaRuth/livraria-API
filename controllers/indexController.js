@@ -62,7 +62,7 @@ const indexController = {
             res.json(livroAtualizado)
         }
 
-        res.status(401).send("erro ao atualizar livro")
+        res.status(401).send("erro na atualização do livro")
     }
 
 }
